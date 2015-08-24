@@ -16,7 +16,6 @@ use Doctrine\ORM\Query\SqlWalker;
  * @copyright 2014 - 2015 Chaplean (http://www.chaplean.com)
  * @since     1.0.0
  */
-
 class Cast extends FunctionNode
 {
     const PARAMETER_KEY = 'expression';
@@ -51,18 +50,24 @@ class Cast extends FunctionNode
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
         $this->expr[self::PARAMETER_KEY] = $parser->ArithmeticPrimary();
+
         $parser->match(Lexer::T_AS);
         $parser->match(Lexer::T_IDENTIFIER);
+
         $lexer = $parser->getLexer();
         $type = $lexer->token['value'];
+
         if ($lexer->isNextToken(Lexer::T_OPEN_PARENTHESIS)) {
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
             /** @var Literal $parameter */
             $parameter = $parser->Literal();
             $parameters = array(
                 $parameter->value
             );
+
             if ($lexer->isNextToken(Lexer::T_COMMA)) {
                 while ($lexer->isNextToken(Lexer::T_COMMA)) {
                     $parser->match(Lexer::T_COMMA);
@@ -70,9 +75,11 @@ class Cast extends FunctionNode
                     $parameters[] = $parameter->value;
                 }
             }
+
             $parser->match(Lexer::T_CLOSE_PARENTHESIS);
             $type .= '(' . implode(', ', $parameters) . ')';
         }
+
         if (!$this->checkType($type)) {
             $parser->syntaxError(
                 sprintf(
@@ -82,10 +89,10 @@ class Cast extends FunctionNode
                 $lexer->token
             );
         }
+
         $this->expr[self::TYPE_KEY] = $type;
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
-
 
     /**
      * Check that given type is supported.
@@ -96,6 +103,7 @@ class Cast extends FunctionNode
     protected function checkType($type)
     {
         $type = strtolower(trim($type));
+
         foreach ($this->supportedTypes as $supportedType) {
             if (strpos($type, $supportedType) === 0) {
                 return true;
