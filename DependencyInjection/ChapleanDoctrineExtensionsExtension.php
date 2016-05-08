@@ -2,7 +2,6 @@
 
 namespace Chaplean\Bundle\DoctrineExtensionsBundle\DependencyInjection;
 
-use Symfony\Component\ClassLoader\Psr4ClassLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -31,9 +30,5 @@ class ChapleanDoctrineExtensionsExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-
-        $classLoader = new Psr4ClassLoader();
-        $classLoader->addPrefix('DoctrineExtensions\\', $container->getParameter('kernel.root_dir') . '/../vendor/beberlei/DoctrineExtensions/src/');
-        $classLoader->register();
     }
 }
