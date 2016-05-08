@@ -10,8 +10,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Chaplean\\Bundle\\DoctrineExtensionsBundle": ""
+        "psr-4": {
+            "Chaplean\\Bundle\\DoctrineExtensionsBundle\\": ""
         },
         "classmap": [
             "app/AppKernel.php"
