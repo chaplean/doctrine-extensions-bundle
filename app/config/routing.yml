@@ -1,0 +1,4 @@
+chaplean_doctrine_extensions_bundle:
+    resource: '@ChapleanDoctrineExtensionsBundle/Resources/config/routing.yml'
+    prefix:   /
+
