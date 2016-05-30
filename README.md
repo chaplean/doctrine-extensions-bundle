@@ -19,6 +19,7 @@ composer require chaplean/doctrine-extensions-bundle
 Add
 ```php
             new Chaplean\Bundle\DoctrineExtensionsBundle\ChapleanDoctrineExtensionsBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 ```
 
 ## 3. app/config/config.yml
