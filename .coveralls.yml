@@ -1,1 +1,2 @@
-repo_token: REPLACE_ME
+coverage_clover: build/logs/clover-*.xml
+repo_token: jqEtYwcw5Fvox3hGgdeBdxMnZcHjW3mRP

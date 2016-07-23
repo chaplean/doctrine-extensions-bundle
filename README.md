@@ -1,32 +1,27 @@
-Getting Started With ChapleanDoctrineExtensionsBundle
-=====================================================
+Getting Started With Chaplean Doctrine Extensions Bundle
+========================================================
 
 # Prerequisites
 
-Symfony 2.8+
+This version of the bundle requires Symfony 2.8+.
 
-# Initialization
+# Installation
 
-
-## 1. Install from composer
+## 1. Composer
 
 ```
 composer require chaplean/doctrine-extensions-bundle
 ```
 
-## 2. app/AppKernel.php
+## 2. AppKernel.php
 
 Add
 ```php
             new Chaplean\Bundle\DoctrineExtensionsBundle\ChapleanDoctrineExtensionsBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 ```
 
 ## 3. app/config/config.yml
-
-Add Import
-```yml
-    - { resource: '@ChapleanDoctrineExtensionsBundle/Resources/config/doctrine_extensions.yml' }
-```
 
 ##### Optional : mapping for loggable/translatable/tree
 
