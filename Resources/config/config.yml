@@ -7,7 +7,7 @@ services:
         tags:
             # translatable sets locale after router processing
             - { name: kernel.event_listener, event: kernel.request, method: onLateKernelRequest, priority: -10 }
-            # loggable hooks user username if one is in security context
+            # loggable hooks user username if one is in security token storage
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
             # translatable sets locale such as default application locale before command execute
             - { name: kernel.event_listener, event: console.command, method: onConsoleCommand, priority: -10 }
