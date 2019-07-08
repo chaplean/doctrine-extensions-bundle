@@ -38,3 +38,4 @@ coverage/
 # Database
 /.db
 auth.json/
+private/
